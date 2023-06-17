@@ -5,7 +5,11 @@
 <script>
 export default {
   name: 'IndexPage',
-  layout: 'default',
-  middleware: 'auth'
+  middleware: 'auth',
+  head() {
+    return {
+      title: 'Dashboard',
+    }
+  },
 }
 </script>
