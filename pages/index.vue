@@ -1,15 +1,17 @@
 <template>
-  <Login />
+  <MedicalRecord />
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-  middleware: 'auth',
   head() {
     return {
       title: 'Dashboard',
     }
   },
+  mounted(){
+    console.log('this', this)
+  }
 }
 </script>

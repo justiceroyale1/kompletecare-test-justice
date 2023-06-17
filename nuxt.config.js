@@ -31,13 +31,21 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css', '@/assets/scss/main.scss', '@mdi/font/css/materialdesignicons.min.css'],
+  css: [
+    '@/assets/css/main.css',
+    '@/assets/scss/main.scss',
+    '@mdi/font/css/materialdesignicons.min.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/repositories.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+
+  router: {
+    middleware: ['auth'],
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
@@ -48,7 +56,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
+    '@nuxtjs/auth',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -57,12 +65,6 @@ export default {
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL || 'https://testdrive.kompletecare.com/api',
     appName: process.env.APP_NAME || 'KompleteCare',
-  },
-
-  privateRuntimeConfig: {
-    axios: {
-      baseURL: process.env.BASE_URL || 'https://testdrive.kompletecare.com/api',
-    },
   },
 
   axios: {
@@ -90,15 +92,12 @@ export default {
     strategies: {
       local: {
         token: {
-          property: 'data.token',
+          propertyName: 'data.token',
           global: true,
           // required: true,
-          type: 'Bearer',
+          // type: 'Bearer',
         },
-        user: {
-          property: 'user',
-          autoFetch: false,
-        },
+        user: false,
         endpoints: {
           login: { url: '/login', method: 'post' },
           logout: { url: '', method: 'post' },
@@ -109,7 +108,7 @@ export default {
     redirect: {
       login: '/login',
       logout: '/login',
-      callback: '/',
+      callback: '/login',
       home: '/',
     },
   },

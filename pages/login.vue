@@ -11,7 +11,6 @@ export default {
       title: 'Login',
     }
   },
-  middleware: 'auth',
   auth: 'guest'
 }
 </script>

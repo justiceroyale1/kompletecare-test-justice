@@ -1,9 +1,12 @@
 <!-- Please remove this file from your project -->
 <template>
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 col-xl-4">
-      <div class="display-3 text-center text-primary">
-        {{ $config.appName }}
+  <div class="row justify-content-left">
+    <div class="col-sm-12">
+      <div class="h2 text-primary">
+        {{ title }}
+      </div>
+      <div class="h6 text-secondary">
+        {{ subtitle }}
       </div>
       <b-card
         title="Login to your account"
@@ -31,7 +34,9 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-button type="submit" variant="primary" :disabled="submitting">Login</b-button>
+          <b-button type="submit" variant="primary" :disabled="submitting"
+            >Login</b-button
+          >
         </b-form>
 
         <!-- <b-button href="#" variant="primary">Go somewhere</b-button> -->
@@ -41,10 +46,14 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
-  name: 'Login',
+  name: 'MedicalRecord',
   data() {
     return {
+      title: 'Update Patient Medical Record',
+      subtitle: 'Click the tabs to view and edit patient medical details',
       submitting: false,
       error: null,
       form: {
@@ -53,24 +62,19 @@ export default {
       },
     }
   },
+  async fetch() {
+    await this.getInvestigations()
+  },
+  computed: {
+    ...mapGetters({
+      investigations: "investigations/resources",
+    })
+  },
   methods: {
-    resetForm() {
-      this.form = {
-        email: '',
-        password: '',
-      }
-    },
-    async submit() {
-      this.submitting = true
-      try {
-        let response = await this.$auth.loginWith('local', {data: this.form})
-        this.$auth.setUserToken(response.data.data.token)
-        // console.log(response)
-        this.submitting = false
-      } catch (err) {
-        console.log(err)
-      }
-    }
+    ...mapActions({
+      getInvestigations: "investigations/getResources",
+      postInvestigation: "investigations/postResource",
+    }),
   },
 }
 </script>
