@@ -1,4 +1,3 @@
-<!-- Please remove this file from your project -->
 <template>
   <nav class="mb-3">
     <b-nav class="px-0" vertical>
@@ -23,7 +22,7 @@
           </span>
         </b-nav-item>
       </div>
-      <hr height="2px" width="100%">
+      <hr height="2px" width="100%" />
       <div v-for="(bottomMenuItem, bottomMenuItemIndex) in bottomMenuItems">
         <b-nav-item-dropdown v-if="bottomMenuItem.dropdown">
           <template #button-content>
@@ -38,6 +37,7 @@
           :href="bottomMenuItem.route"
           :key="bottomMenuItemIndex"
           :active="bottomMenuItem.active"
+          @click.prevent="bottomMenuItem.clickHandler"
         >
           <span :class="bottomMenuItem.icon"></span>
           <span class="ml-3">
@@ -126,10 +126,17 @@ export default {
           active: false,
           dropdown: false,
           icon: 'mdi mdi-logout',
+          clickHandler: this.logout,
         },
       ],
     }
-  }
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+      this.$auth.setToken('local', false)
+    },
+  },
 }
 </script>
 <style>

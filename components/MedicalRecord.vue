@@ -1,4 +1,3 @@
-<!-- Please remove this file from your project -->
 <template>
   <div class="row justify-content-left">
     <div class="col-sm-12">
@@ -120,7 +119,6 @@ export default {
       title: 'Update Patient Medical Record',
       subtitle: 'Click the tabs to view and edit patient medical details',
       submitting: false,
-      // error: null,
       ctScanOptions: ['Scan needed in the left cerebral hemisphere'],
       mriOptions: ['Full body MRI'],
       form: {

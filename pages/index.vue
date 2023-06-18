@@ -10,8 +10,5 @@ export default {
       title: 'Dashboard',
     }
   },
-  mounted(){
-    console.log('this', this)
-  }
 }
 </script>

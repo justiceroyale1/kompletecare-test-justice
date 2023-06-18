@@ -1,6 +1,3 @@
-<!-- Please remove this file from your project -->
-
-import MainMenu from '../components/MainMenu.vue';
 <template>
   <div style="background-color: #f5f5fb">
     <div class="row mx-0">
