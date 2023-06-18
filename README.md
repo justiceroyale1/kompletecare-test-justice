@@ -1,5 +1,15 @@
 # kompletecare-test
 
+## Installation
+
+```bash
+# clone the repo
+$ git clone https://github.com/justiceroyale1/kompletecare-test-justice.git
+
+# cd into the root directory
+$ cd kompletecare-test-justice
+```
+
 ## Build Setup
 
 ```bash
@@ -14,9 +24,9 @@ $ npm run start
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## How to Use
-* Build the app and launch the server with the commands above
-* Open the app on your browser by visiting [127.0.0.1:3000](http://127.0.0.1:3000)
-* Login with the following credentials:
+
+- Build the app and launch the server with the commands above
+- Open the app on your browser by visiting [127.0.0.1:3000](http://127.0.0.1:3000)
+- Login with the following credentials:
   - Email: tester@kompletecare.com
   - Password: password
-
