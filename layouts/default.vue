@@ -9,7 +9,7 @@ import MainMenu from '../components/MainMenu.vue';
           <MainMenu />
         </div>
       </div>
-      <div class="col-sm-12 col-lg-9 vh-100 px-0">
+      <div class="col-sm-12 col-lg-9 px-0">
         <b-navbar type="light" variant="transparent" class="py-5">
           <b-button v-b-toggle.sidebar class="d-inline-block d-lg-none">
             <span class="mdi mdi-menu"></span>
@@ -48,7 +48,7 @@ import MainMenu from '../components/MainMenu.vue';
                 <MainMenu />
               </div>
             </b-sidebar>
-            <div role="main" class="col-sm-12 col-lg-11 vh-100 pl-lg-5">
+            <div role="main" class="col-sm-12 col-lg-11 pl-lg-5 pb-5">
               <Nuxt />
             </div>
           </div>

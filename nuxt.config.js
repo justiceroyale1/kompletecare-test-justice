@@ -57,6 +57,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -85,6 +86,33 @@ export default {
       },
       'X-Requested-With': 'XMLHttpRequest',
       'Access-Control-Allow-Origin': '*',
+    },
+  },
+
+  toast: {
+    position: 'bottom-center',
+    duration: 5000,
+    keepOnHover: true,
+    fullWidth: false,
+    fitToScreen: true,
+    // className: 'vue-toast-custom',
+    closeOnSwipe: true,
+    register: [
+      // Register custom toasts
+      // @todo add custom messages as they come : login failed, register failed etc
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error',
+        },
+      },
+    ],
+    action: {
+      text: 'Close',
+      onClick: (e, toastObject) => {
+        toastObject.goAway(0)
+      },
     },
   },
 

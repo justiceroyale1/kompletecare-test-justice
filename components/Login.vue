@@ -64,12 +64,14 @@ export default {
       this.submitting = true
       try {
         let response = await this.$auth.loginWith('local', {data: this.form})
-        this.$auth.setUserToken(response.data.data.token)
-        // console.log(response)
-        this.submitting = false
-      } catch (err) {
-        console.log(err)
+        if(response.data.data.token){
+          this.$auth.setUserToken(response.data.data.token)
+        }
+      } catch (error) {
+        let errorMessage = error.response.data.message
+        this.$toasted.error(errorMessage)
       }
+      this.submitting = false
     }
   },
 }
